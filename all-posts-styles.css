@@ -1,0 +1,57 @@
+/* Grid of posts */
+.posts {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Post card styling */
+.post {
+  background-color: var(--blue);
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Alternate colors for every other row */
+.post:nth-child(4n-3),
+.post:nth-child(4n-2) {
+  background-color: var(--blue);
+}
+
+.post:nth-child(4n-1),
+.post:nth-child(4n) {
+  background-color: var(--light-brown);
+}
+
+/* Hover effect */
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title inside post */
+.post h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Author and date section */
+.post .meta {
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+/* single column on small screens */
+@media (max-width: 768px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}

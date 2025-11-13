@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<!-- root element -->
+<html lang="en">
+<!-- head section -->
+
+<head>
+    <!-- metadata -->
+    <meta charset="UTF-8">
+    <!-- webpage title -->
+    <title>homepage</title>
+    <!-- stylesheet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./post-styles.css">
+</head>
+
+<!-- body section -->
+
+<body>
+    <header class="text-center py-4 border-bottom border-black">
+        <h1 class="fw-bold display-5">BLOG TITLE</h1>
+    </header>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-sm justify-content-center border-bottom border-black">
+        <ul class="navbar-nav">
+            <li class="nav-item mx-3"><a class="nav-link" href="index.html">home</a></li>
+            <li class="nav-item mx-3"><a class="nav-link" href="all-posts.html">all posts</a></li>
+            <li class="nav-item mx-3"><a class="nav-link" href="index.html#about-us">about us</a></li>
+            <li class="nav-item mx-3"><a class="nav-link" href="sign-in.html">login</a></li>
+        </ul>
+        <form class="d-flex ms-3" role="search">
+            <input class="form-control form-control-sm" type="search" placeholder="Search">
+            <button class="btn btn-sm ms-1" type="submit">
+                <img src="./images/search.png" alt="Search" style="width:16px; height:16px;">
+            </button>
+        </form>
+    </nav>
+
+    <!-- main -->
+    <main>
+        <section id="content" class="container my-4">
+            <div class="row g-2">
+                <!-- Left Column - Main Post -->
+                <div id="post" class="col-md-8">
+                    <div class="bg-light-brown p-4">
+                        <h2 class="fw-bold">Blog Title</h2>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <small>By: <strong>Name Lastname</strong></small>
+                                <small class="ms-3">Posted on: <strong>January 1, 2025</strong></small>
+                                <small class="ms-3">Comments: <strong>0</strong></small>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-primary">Share This Post</button>
+                            </div>
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="mt-4">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a
+                                elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in
+                                urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris
+                                non libero faucibus, et eleifend neque faucibus.
+                            </p>
+                            <p>
+                                Sed sit amet tincidunt erat. Vivamus suscipit dolor eget turpis posuere, vitae feugiat
+                                libero dictum. In id velit auctor, pretium enim ut, pretium metus. Curabitur nec eros ac
+                                urna dictum vehicula sit amet a lorem.
+                            </p>
+                            <p>
+                                Maecenas lobortis varius lorem, et interdum mi cursus eget. Sed fringilla ut orci et
+                                lacinia. Duis tristique orci at dolor egestas, sed lacinia sapien mollis. Aenean et
+                                auctor felis, ut congue mi. Suspendisse potenti.
+                            </p>
+                            <p>
+                                Do eiusmod dolore ipsum quis aliqua tempor ut do ullamco ex quis enim adipiscing minim.
+                                Elit ut ad enim lorem laboris ex. Labore amet labore amet minim ut veniam dolore do
+                                ipsum ad adipiscing et elit ut. Veniam laboris enim incididunt adipiscing lorem
+                                consectetur minim eiusmod do.</p>
+                            <p>
+                                Lorem ullamco incididunt tempor ut ad incididunt. Aliquip nostrud do exercitation
+                                nostrud magna consectetur aliqua do. Consequat tempor commodo ut enim quis ipsum tempor
+                                ipsum dolor. Aliquip laboris lorem minim amet ut veniam ad ullamco labore ut amet
+                                ad adipiscing amet. Consequat amet ut ea eiusmod ut aliquip do labore veniam enim. Ut
+                                consequat commodo incididunt adipiscing ea.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Sidebar -->
+                <div id="post-sidebar" class="col-md-4">
+                    <div class="bg-blue p-4">
+                        <!-- About Me -->
+                        <div class="mb-4">
+                            <h4>About Name Lastname</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a
+                                elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in
+                                urna. Integer vel volutpat leo.
+                            </p>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="mb-4">
+                            <h4>Contact Info</h4>
+                            <ul class="list-unstyled">
+                                <li>Email: <a href="mailto:example@email.com">example@email.com</a></li>
+                                <li>Phone: (123) 456-7890</li>
+                            </ul>
+                        </div>
+
+                        <!-- Other Recent Posts -->
+                        <div>
+                            <h4>Other Recent Posts</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Post Title 1</a></li>
+                                <li><a href="#">Post Title 2</a></li>
+                                <li><a href="#">Post Title 3</a></li>
+                                <li><a href="#">Post Title 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- footer -->
+    <footer></footer>
+
+    <!-- javascript -->
+
+</body>
+
+</html>

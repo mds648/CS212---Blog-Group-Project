@@ -1,0 +1,7 @@
+#post-sidebar a {
+    text-decoration: none;
+}
+
+#post-sidebar a:hover {
+    text-decoration: underline;
+}

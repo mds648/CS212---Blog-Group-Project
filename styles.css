@@ -64,6 +64,10 @@ nav,
 a:hover {
     text-decoration: underline;
 }
+.nav-link.nav-active {
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 /* ============== ABOUT US STYLES ============== */
 #about-us h3 {

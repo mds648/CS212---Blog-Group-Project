@@ -5,38 +5,39 @@
     <title>signin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+            rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+            rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 
 </head>
 <body>
-    <header class="text-center py-4 border-bottom border-black">
-        <h1 class="fw-bold display-5">WELCOME</h1>
-    </header>
-    <nav class="navbar navbar-expand-sm justify-content-center border-bottom border-black">
-        <ul class="navbar-nav">
-            <li class="nav-item mx-3"><a class="nav-link" href="index.html">home</a></li>
-            <li class="nav-item mx-3"><a class="nav-link" href="all-posts.html">all posts</a></li>
-            <li class="nav-item mx-3"><a class="nav-link" href="index.html#about-us">about us</a></li>
-        </ul>
-        <form class="d-flex ms-3" role="search">
-            <input class="form-control form-control-sm" type="search" placeholder="Search">
-            <button class="btn btn-sm ms-1" type="submit">
-                <img src="./images/search.png" alt="Search" style="width:16px; height:16px;">
-            </button>
-        </form>
-    </nav>
+<header class="text-center py-4 border-bottom border-black">
+    <h1 class="fw-bold display-5">WELCOME</h1>
+</header>
+<nav class="navbar navbar-expand-sm justify-content-center border-bottom border-black">
+    <ul class="navbar-nav">
+        <li class="nav-item mx-3"><a class="nav-link" href="index.html">home</a></li>
+        <li class="nav-item mx-3"><a class="nav-link" href="all-posts.html">all posts</a></li>
+        <li class="nav-item mx-3"><a class="nav-link" href="index.html#about-us">about us</a></li>
+        <li class="nav-item mx-3"><a class="nav-link" href="sign-in.html">login</a></li>
+    </ul>
+    <form class="d-flex ms-3" role="search">
+        <input class="form-control form-control-sm" type="search" placeholder="Search">
+        <button class="btn btn-sm ms-1" type="submit">
+            <img src="./images/search.png" alt="Search" style="width:16px; height:16px;">
+        </button>
+    </form>
+</nav>
 <div class="auth-container">
     <div class="form-box">
         <h1 id="title">Sign Up</h1>
@@ -61,22 +62,22 @@
     </div>
 </div>
 <script>
-let signupBtn = document.getElementById("signupBtn");
-let signinBtn = document.getElementById("signinBtn");
-let nameField = document.getElementById("nameField");
-let title = document.getElementById("title");
-signinBtn.onclick = function(){
-    nameField.style.maxHeight = "0"
-    title.innerHTML = "Sign In";
-    signupBtn.classList.add("disable");
-    signinBtn.classList.remove("disable");
-}
-signupBtn.onclick = function(){
-    nameField.style.maxHeight = "60px"
-    title.innerHTML = "Sign Up";
-    signupBtn.classList.remove("disable");
-    signinBtn.classList.add("disable");
-}
+    let signupBtn = document.getElementById("signupBtn");
+    let signinBtn = document.getElementById("signinBtn");
+    let nameField = document.getElementById("nameField");
+    let title = document.getElementById("title");
+    signinBtn.onclick = function () {
+        nameField.style.maxHeight = "0"
+        title.innerHTML = "Sign In";
+        signupBtn.classList.add("disable");
+        signinBtn.classList.remove("disable");
+    }
+    signupBtn.onclick = function () {
+        nameField.style.maxHeight = "60px"
+        title.innerHTML = "Sign Up";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+    }
 </script>
 <script src="./app.js"></script>
 </body>

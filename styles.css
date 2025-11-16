@@ -107,7 +107,7 @@ h3.au-header {
 }
 
 /* Grid of posts */
-.posts {
+#posts {
     display: grid;
     gap: 1.5rem;
     margin-top: 2rem;
@@ -129,9 +129,22 @@ h3.au-header {
 }
 
 /* Alternate colors for every other row */
-.post:nth-child(4n-1),
-.post:nth-child(4n) {
+#posts .post:nth-child(4n-1),
+#posts .post:nth-child(4n) {
     background-color: var(--light-brown);
+}
+
+/*Alternate colors for every other item */
+#recent .post:nth-child(2n) {
+    background-color: var(--light-brown);
+}
+
+#recent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 2rem;
 }
 
 /* Hover effect */
@@ -154,7 +167,7 @@ h3.au-header {
 
 /* single column on small screens */
 @media (max-width: 768px) {
-    .posts {
+    #posts {
         grid-template-columns: 1fr;
     }
 }
@@ -163,6 +176,7 @@ h3.au-header {
     min-width: 10px;
     display: inline-block;
 }
+
 /* ============== SIGN IN STYLES ============== */
 .auth-container {
     font-family: 'Poppins', sans-serif;

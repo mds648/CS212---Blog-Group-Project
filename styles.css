@@ -10,7 +10,7 @@
 }
 
 /* ========= GLOBAL STYLES ========= */
-body {
+body, nav, header {
     background-color: var(--tan);
 }
 
@@ -64,6 +64,7 @@ nav,
 a:hover {
     text-decoration: underline;
 }
+
 .nav-link.nav-active {
     text-decoration: underline;
     font-weight: bold;
@@ -171,7 +172,9 @@ h3.au-header {
     background-image: url(./images/brownbackground.jpg);
     background-position: center;
     background-size: cover;
-    position: relative;
+    position: absolute;
+    top: 0;
+    z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;

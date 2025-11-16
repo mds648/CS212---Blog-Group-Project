@@ -93,7 +93,7 @@ h3.au-header {
     justify-content: end;
 }
 
-/* posts */
+/* ============== ALL POSTS STYLES ============== */
 #post-sidebar a {
     text-decoration: none;
 }
@@ -102,7 +102,6 @@ h3.au-header {
     text-decoration: underline;
 }
 
-/* all posts */
 /* Grid of posts */
 .posts {
     display: grid;
@@ -160,5 +159,3 @@ h3.au-header {
         grid-template-columns: 1fr;
     }
 }
-
-

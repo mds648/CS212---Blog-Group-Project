@@ -28,4 +28,63 @@ likeBtn.addEventListener("click", function(e){
     }
     // update the count
     likeCount.textContent = count;
+
 })
+
+// comment section 
+let comments = [];
+let admin = false; 
+
+function showComments() {
+    const list = $("#comments ul");
+    list.empty();
+
+    comments.forEach((comment, index) => {
+        const li = $(`
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="comment-text">${comment}</span>
+            </li>
+        `);
+
+        // delete comment (admin only - for moderation)
+        if (admin === true) {
+            const deleteBtn = $(`
+                <button class="btn btn-sm btn-outline-danger delete-btn">Delete</button>
+            `);
+
+            deleteBtn.click(function () {
+                $(this).parent().slideUp(200, function () {
+                    comments.splice(index, 1);
+                    showComments();
+                });
+            })
+
+
+            li.append(deleteBtn);
+        }
+
+        list.append(li.hide().fadeIn(200));
+    });
+}
+
+showComments();
+
+// add comment with btn
+$("#postCommentBtn").click(function () {
+    const newComment = $("#commentInput").val();
+    if (newComment !== "") {
+        comments.push(newComment);
+        $("#commentInput").val(""); 
+        showComments();
+    }
+});
+
+// 'enter' to post, 'esc' to clear
+$("#commentInput").keydown(function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        $("#postCommentBtn").click();
+    } else if (e.key === "Escape") {
+        $(this).val("");
+    }
+});

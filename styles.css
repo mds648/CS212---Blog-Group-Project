@@ -125,6 +125,7 @@ h3.au-header {
     justify-content: space-between;
     text-decoration: none;
     color: inherit;
+    min-width: 25%;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -158,11 +159,20 @@ h3.au-header {
     margin: 0;
     font-size: 1.25rem;
 }
+.post .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Limit the number of lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
 
 /* Author and date section */
 .post .meta {
     text-align: right;
     font-size: 0.9rem;
+    min-width: 60px;
 }
 
 /* single column on small screens */

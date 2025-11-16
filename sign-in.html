@@ -26,29 +26,31 @@
 </header>
 <div id="navbar-container"></div>
 
-<div class="auth-container">
-    <div class="form-box">
-        <h1 id="title">Sign Up</h1>
-        <form>
-            <div class="input-group">
-                <div class="input-field" id="nameField">
-                    <input type="text" placeholder="Name">
+<main>
+    <div class="auth-container">
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                        <input type="text" placeholder="Name">
+                    </div>
+                    <div class="input-field">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <p>Don't remember password? <a href="#">Click here</a></p>
                 </div>
-                <div class="input-field">
-                    <input type="email" placeholder="Email">
+                <div class="btn-field">
+                    <button type="button" id="signupBtn">Sign Up</button>
+                    <button type="button" id="signinBtn" class="disable">Sign In</button>
                 </div>
-                <div class="input-field">
-                    <input type="password" placeholder="Password">
-                </div>
-                <p>Don't remember password? <a href="#">Click here</a></p>
-            </div>
-            <div class="btn-field">
-                <button type="button" id="signupBtn">Sign Up</button>
-                <button type="button" id="signinBtn" class="disable">Sign In</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+</main>
 <script>
     let signupBtn = document.getElementById("signupBtn");
     let signinBtn = document.getElementById("signinBtn");

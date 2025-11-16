@@ -121,7 +121,7 @@ h3.au-header {
     border-radius: 10px;
     padding: 1.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     text-decoration: none;
     color: inherit;
@@ -129,11 +129,6 @@ h3.au-header {
 }
 
 /* Alternate colors for every other row */
-.post:nth-child(4n-3),
-.post:nth-child(4n-2) {
-    background-color: var(--blue);
-}
-
 .post:nth-child(4n-1),
 .post:nth-child(4n) {
     background-color: var(--light-brown);

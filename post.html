@@ -57,7 +57,7 @@
                         </div>
                         <div>
                             <!-- share button -->
-                            <button class="btn btn-outline-primary">Share This Post</button>
+                            <button id="shareBtn" class="btn btn-outline-primary">Share This Post</button>
 
                             <!-- like button -->
                             <button id="likeBtn" class="btn">
@@ -176,6 +176,19 @@
         // update the count
         likeCount.textContent = count;
     })
+
+    function sharePost() {
+        // currently just copies the link to the clipboard
+        // we can change it later
+        const url = window.location.href;
+        navigator.clipboard.writeText(url);
+        alert('Link copied to clipboard!');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const shareBtn = document.getElementById('shareBtn');
+        shareBtn.addEventListener('click', sharePost);
+    });
 </script>
 <script src="./app.js"></script>
 </body>

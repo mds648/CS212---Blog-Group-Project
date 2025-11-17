@@ -48,11 +48,11 @@
             <!-- Left Column - Main Post -->
             <div id="post" class="col-md-8">
                 <div class="bg-light-brown p-4">
-                    <h2 class="fw-bold">Blog Title</h2>
+                    <h2 id="blogTitle" class="fw-bold">Blog Title</h2>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <div>
-                            <small>By: <strong>Name Lastname</strong></small>
-                            <small class="ms-3">Posted on: <strong>January 1, 2025</strong></small>
+                            <small>By: <strong id="postAuthor">Name Lastname</strong></small>
+                            <small id="postDate" class="ms-3">Posted on: <strong>January 1, 2025</strong></small>
                             <small class="ms-3">Comments: <strong>0</strong></small>
                         </div>
                         <div>
@@ -68,35 +68,8 @@
                     </div>
 
                     <!-- Post Content -->
-                    <div class="mt-4">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a
-                            elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in
-                            urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris
-                            non libero faucibus, et eleifend neque faucibus.
-                        </p>
-                        <p>
-                            Sed sit amet tincidunt erat. Vivamus suscipit dolor eget turpis posuere, vitae feugiat
-                            libero dictum. In id velit auctor, pretium enim ut, pretium metus. Curabitur nec eros ac
-                            urna dictum vehicula sit amet a lorem.
-                        </p>
-                        <p>
-                            Maecenas lobortis varius lorem, et interdum mi cursus eget. Sed fringilla ut orci et
-                            lacinia. Duis tristique orci at dolor egestas, sed lacinia sapien mollis. Aenean et
-                            auctor felis, ut congue mi. Suspendisse potenti.
-                        </p>
-                        <p>
-                            Do eiusmod dolore ipsum quis aliqua tempor ut do ullamco ex quis enim adipiscing minim.
-                            Elit ut ad enim lorem laboris ex. Labore amet labore amet minim ut veniam dolore do
-                            ipsum ad adipiscing et elit ut. Veniam laboris enim incididunt adipiscing lorem
-                            consectetur minim eiusmod do.</p>
-                        <p>
-                            Lorem ullamco incididunt tempor ut ad incididunt. Aliquip nostrud do exercitation
-                            nostrud magna consectetur aliqua do. Consequat tempor commodo ut enim quis ipsum tempor
-                            ipsum dolor. Aliquip laboris lorem minim amet ut veniam ad ullamco labore ut amet
-                            ad adipiscing amet. Consequat amet ut ea eiusmod ut aliquip do labore veniam enim. Ut
-                            consequat commodo incididunt adipiscing ea.
-                        </p>
+                    <div id="postContent" class="mt-4">
+                        <p>Loading Content...</p>
                     </div>
                 </div>
             </div>
@@ -127,7 +100,7 @@
                 <div class="bg-blue p-4">
                     <!-- About Me -->
                     <div class="mb-4">
-                        <h4>About Name Lastname</h4>
+                        <h4 id="sidebarAuthor">About...</h4>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a
                             elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in
@@ -256,6 +229,7 @@ $("#commentInput").keydown(function (e) {
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- javascript -->
+     <script src="./scripts/blogData.js"></script>
     <script src="./app.js"></script>
 </body>
 

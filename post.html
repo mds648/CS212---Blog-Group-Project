@@ -100,6 +100,27 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Comment Section -->
+        <section id="comment-section" class="container my-4">
+            <div class="bg-light-brown p-4 col-md-8">
+                <h3>Comments:</h3>
+                <div class="d-flex">
+                    <input type="text" id="commentInput" class="form-control" placeholder="Add a comment..."></input>
+                    <button id="postCommentBtn" class="btn btn-sm ms-1" type="submit">
+                        Post
+                    </button>
+                </div>
+
+                <div id="comments">
+                    <ul class="list-unstyled">
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </main>
 
             <!-- Right Column - Sidebar -->
             <div id="post-sidebar" class="col-md-4">
@@ -122,6 +143,7 @@
                             <li>Phone: (123) 456-7890</li>
                         </ul>
                     </div>
+
 
                     <!-- Other Recent Posts -->
                     <div>
@@ -231,7 +253,10 @@ $("#commentInput").keydown(function (e) {
     }
 });
 </script>
-<script src="./app.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- javascript -->
+    <script src="./app.js"></script>
 </body>
 
 

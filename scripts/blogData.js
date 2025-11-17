@@ -18,6 +18,8 @@ async function initializePosts() {
         allBlogPosts = data;
         // log success message
         console.log('blog posts loaded successfully!');
+        // render the posts only if successful
+        renderPostList();
         return true;
     } catch (error) {
         console.error('could not fetch post data:', error);
@@ -60,7 +62,7 @@ function renderPostList () {
 }
 
 // render the posts on the 'all-posts' page
-renderPostList();
+initializePosts();
 
 /* 
     THE FOLLOWING SHOULD ONLY BE ENABLED IF THIS MODULE 

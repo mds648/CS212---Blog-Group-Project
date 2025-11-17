@@ -1,0 +1,28 @@
+[ 
+    {
+        "username": "alexi",
+        "password": "1234",
+        "role": "mod"
+    },
+    {
+        "username": "canyon",
+        "password": "5678",
+        "role": "mod"
+    },{
+        "username": "kristina",
+        "password": "9012",
+        "role": "mod"
+    },{
+        "username": "mckinley",
+        "password": "3456",
+        "role": "mod"
+    },{
+        "username": "annabelle",
+        "password": "7890",
+        "role": "mod"
+    },{
+        "username": "luthor",
+        "password": "abcd",
+        "role": "user"
+    }
+]

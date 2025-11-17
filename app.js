@@ -5,6 +5,7 @@ function insertNavbar() {
                 <li class="nav-item mx-3"><a class="nav-link" href="index.html">home</a></li>
                 <li class="nav-item mx-3"><a class="nav-link" href="all-posts.html">all posts</a></li>
                 <li class="nav-item mx-3"><a class="nav-link" href="index.html#about-us">about us</a></li>
+                <li class="nav-item mx-3"><a class="nav-link" href="create-post.html">create post</a></li>
                 <li class="nav-item mx-3"><a class="nav-link" href="sign-in.html">login</a></li>
             </ul>
             <form class="d-flex ms-3" role="search">

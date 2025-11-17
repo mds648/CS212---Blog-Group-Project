@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<!-- root element -->
+<html lang="en">
+
+<!-- head section -->
+<head>
+  <!-- metadata -->
+  <meta charset="UTF-8">
+  <!-- webpage title -->
+  <title>create post</title>
+  <!-- stylesheet -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hepta+Slab:wght@1..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+    rel="stylesheet">
+
+  <!-- styles -->
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./all-posts-styles.css" />
+</head>
+
+<body>
+  <header class="text-center py-4 border-bottom border-black">
+      <h1 class="fw-bold display-5">BLOG TITLE</h1>
+  </header>
+
+  </header>
+  <!-- navigation -->
+  <div id="navbar-container"></div>
+
+  <main class="container my-5">
+    <form id="createPostForm" class="bg-light-brown p-4 rounded">
+      <h2 class="mb-4">New Blog Entry</h2>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Post Title</label>
+        <input type="text" class="form-control" id="title" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="author" class="form-label">Author Name</label>
+        <input type="text" class="form-control" id="author" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="content" class="form-label">Post Content</label>
+        <textarea class="form-control" id="content" rows="8" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-outline-primary">Publish Post</button>
+    </form>
+  </main>
+
+  <!-- Script to handle post submission -->
+  <script type="module">
+    // Listen for form submission
+    document.getElementById("createPostForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Create a new post object from form inputs
+      const post = {
+        id: "post-" + Date.now(),
+        title: document.getElementById("title").value,
+        author: document.getElementById("author").value,
+        date: document.getElementById("date").value,
+        contents: document.getElementById("content").value
+      };
+
+      try {
+        // Send the post to the backend via POST request
+        const res = await fetch("/api/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(post)
+        });
+
+        // If successful, redirect to all-posts page
+        if (res.ok) {
+          alert("Post published!");
+          window.location.href = "all-posts.html";
+        } else {
+          alert("Failed to publish post.");
+        }
+      } catch (error) {
+        // Handle any errors during submission
+        console.error("Error submitting post:", error);
+        alert("An error occurred while publishing.");
+      }
+    });
+  </script>
+
+  <script src="./app.js"></script>
+</body>
+</html>

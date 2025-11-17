@@ -1,0 +1,23 @@
+[
+    {
+        "id":"intro-to-blogs-1",
+        "title": "Introduction to Writing Blogs",
+        "author": "McKinley Sydnor",
+        "date": "mm-dd-yyyy",
+        "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus." 
+    },
+    {
+        "id":"intro-to-blogs-2",
+        "title": "Introduction to Writing Blogs II",
+        "author": "McKinley Sydnor",
+        "date": "mm-dd-yyyy",
+        "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus." 
+    },
+    {
+        "id":"intro-to-blogs-3",
+        "title": "Introduction to Writing Blogs III",
+        "author": "McKinley Sydnor",
+        "date": "mm-dd-yyyy",
+        "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus." 
+    }
+]

@@ -1,4 +1,4 @@
-/* colors  */
+/* ======= Variables =====  */
 :root {
     --light-brown: #A18D6D;
     --brown: #703B3B;
@@ -9,8 +9,8 @@
     --h3-size: 20px;
 }
 
-/* homepage */
-body {
+/* ========= GLOBAL STYLES ========= */
+body, nav, header {
     background-color: var(--tan);
 }
 
@@ -65,7 +65,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* about us */
+.nav-link.nav-active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* ============== ABOUT US STYLES ============== */
 #about-us h3 {
     font-weight: bold;
 }
@@ -79,7 +84,20 @@ h3.au-header {
     border-bottom: 2px solid var(--red-accent);
 }
 
-/* posts */
+#about-us img {
+    height: 10rem;
+    width: auto;
+    object-fit: cover;
+    border-radius: 10rem;
+}
+
+.au-img-container {
+    border-radius: 10rem;
+    display: flex;
+    justify-content: end;
+}
+
+/* ============== ALL POSTS STYLES ============== */
 #post-sidebar a {
     text-decoration: none;
 }
@@ -97,62 +115,182 @@ h3.au-header {
 
 /* all posts */
 /* Grid of posts */
-.posts {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding: 0 2rem;
-  grid-template-columns: repeat(2, 1fr);
+#posts {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 2rem;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /* Post card styling */
 .post {
-  background-color: var(--blue);
-  border-radius: 10px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    min-width: 25%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Alternate colors for every other row */
-.post:nth-child(4n-3),
-.post:nth-child(4n-2) {
-  background-color: var(--blue);
+#posts .post:nth-child(4n-1),
+#posts .post:nth-child(4n) {
+    background-color: var(--light-brown);
 }
 
-.post:nth-child(4n-1),
-.post:nth-child(4n) {
-  background-color: var(--light-brown);
+/*Alternate colors for every other item */
+#recent .post:nth-child(2n) {
+    background-color: var(--light-brown);
+}
+
+#recent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 2rem;
 }
 
 /* Hover effect */
 .post:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Title inside post */
 .post h2 {
-  margin: 0;
-  font-size: 1.25rem;
+    margin: 0;
+    font-size: 1.25rem;
+}
+.post .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Limit the number of lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 /* Author and date section */
 .post .meta {
-  text-align: right;
-  font-size: 0.9rem;
+    text-align: right;
+    font-size: 0.9rem;
+    min-width: 60px;
 }
 
 /* single column on small screens */
 @media (max-width: 768px) {
-  .posts {
-    grid-template-columns: 1fr;
-  }
+    #posts {
+        grid-template-columns: 1fr;
+    }
 }
 
+#likeCount {
+    min-width: 10px;
+    display: inline-block;
+}
 
+/* ============== SIGN IN STYLES ============== */
+.auth-container {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-image: url(./images/brownbackground.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.auth-container .form-box {
+    width: 100%;
+    max-width: 450px;
+    background: var(--tan);
+    padding: 50px 60px 70px;
+    text-align: center;
+}
+
+.auth-container .form-box h1 {
+    font-size: 30px;
+    margin-bottom: 60px;
+    color: var(--brown);
+    position: relative;
+}
+
+.auth-container .form-box h1::after {
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: var(--brown);
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.auth-container .input-field {
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+.auth-container input {
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+}
+
+.auth-container form p {
+    text-align: left;
+    font-size: 13px;
+}
+
+.auth-container form p a {
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.auth-container .btn-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth-container .btn-field button {
+    flex-basis: 48%;
+    background: var(--brown);
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.auth-container .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container .btn-field button.disable {
+    background: var(--light-brown);
+    color: #555;
+}

@@ -19,5 +19,12 @@
         "author": "McKinley Sydnor",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus." 
+    },
+    {
+        "id":"test-blog-1",
+        "title": "Test Blog 1",
+        "author": "Canyon Clark",
+        "date": "mm-dd-yyyy",
+        "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus."
     }
 ]

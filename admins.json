@@ -2,25 +2,31 @@
   {
     "name": "McKinley Sydnor",
     "photo": "",
-    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"},
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    "email": "mds648@nau.edu"
+  },
   {
     "name": "Alexi Montanez",
     "photo": "",
-    "bio": "Hi my name is Alexi and I am a Immersive, Media, and Games major at NAU. I am set to graduate with my bachelors in Spring 2027. My future goal career is to be a game developer and a website designer."
+    "bio": "Hi my name is Alexi and I am a Immersive, Media, and Games major at NAU. I am set to graduate with my bachelors in Spring 2027. My future goal career is to be a game developer and a website designer.",
+    "email": "aam936@nau.edu"
   },
   {
     "name": "Annabelle Rodriguez",
     "photo": "",
-    "bio": "Hey! I'm Annabelle Rodriguez and I am a Computer Science major at NAU. In the future, I would love to be a softeware developer or a networking engineer. I love listen to music, hang out with friends, and travel!"
+    "bio": "Hey! I'm Annabelle Rodriguez and I am a Computer Science major at NAU. In the future, I would love to be a softeware developer or a networking engineer. I love listen to music, hang out with friends, and travel!",
+    "email": "amr2745@nau.edu"
   },
   {
     "name": "Canyon Clark",
     "photo": "https://avatars.githubusercontent.com/u/131414743",
-    "bio": "Welcome, I'm Canyon Clark. I am a student at Northern Arizona University where I'm pursuing majors in Computer and Data Science. I'll be graduating in Spring 2028, and until then, I like to read, game, and code."
+    "bio": "Welcome, I'm Canyon Clark. I am a student at Northern Arizona University where I'm pursuing majors in Computer and Data Science. I'll be graduating in Spring 2028, and until then, I like to read, game, and code.",
+    "email": "cac2339@nau.edu"
   },
   {
     "name": "Kristina Bermudez",
     "photo": "",
-    "bio": "Hello! My name is Kristina Bermudez! I'm a student at Northern Arizona University, and I'm hoping to graduate in Spring 2028 with a bachelor's degree in Computer Science and Math. I love watching movies, listening to podcasts, and playing video games!"
+    "bio": "Hello! My name is Kristina Bermudez! I'm a student at Northern Arizona University, and I'm hoping to graduate in Spring 2028 with a bachelor's degree in Computer Science and Math. I love watching movies, listening to podcasts, and playing video games!",
+    "email": "kb3329@nau.edu"
   }
 ]

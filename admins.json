@@ -1,19 +1,19 @@
 [
   {
     "name": "McKinley Sydnor",
-    "photo": "",
+    "photo": "https://avatars.githubusercontent.com/u/228608460",
     "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
     "email": "mds648@nau.edu"
   },
   {
     "name": "Alexi Montanez",
-    "photo": "",
+    "photo": "https://avatars.githubusercontent.com/u/149130672",
     "bio": "Hi my name is Alexi and I am a Immersive, Media, and Games major at NAU. I am set to graduate with my bachelors in Spring 2027. My future goal career is to be a game developer and a website designer.",
     "email": "aam936@nau.edu"
   },
   {
     "name": "Annabelle Rodriguez",
-    "photo": "",
+    "photo": "https://avatars.githubusercontent.com/u/195067286",
     "bio": "Hey! I'm Annabelle Rodriguez and I am a Computer Science major at NAU. In the future, I would love to be a softeware developer or a networking engineer. I love listen to music, hang out with friends, and travel!",
     "email": "amr2745@nau.edu"
   },
@@ -25,7 +25,7 @@
   },
   {
     "name": "Kristina Bermudez",
-    "photo": "",
+    "photo": "https://avatars.githubusercontent.com/u/194847190",
     "bio": "Hello! My name is Kristina Bermudez! I'm a student at Northern Arizona University, and I'm hoping to graduate in Spring 2028 with a bachelor's degree in Computer Science and Math. I love watching movies, listening to podcasts, and playing video games!",
     "email": "kb3329@nau.edu"
   }

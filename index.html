@@ -77,59 +77,7 @@
         <h2 class="au-header border-bottom border-black">about us</h2>
         <p>The admins who created the Blog Post Website.</p>
         <!-- containers for each group member -->
-        <div class="row mt-3">
-            <div class="col-sm-4 au-img-container">
-                <img src="./images" alt="Photo of McKinley Sydnor">
-            </div>
-            <div class="col-sm-8">
-                <h3 class="au-header">McKinley Sydnor</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-4 au-img-container">
-                <img src="./images" alt="Photo of Alexi Montanez">
-            </div>
-            <div class="col-sm-8">
-                <h3 class="au-header">Alexi Montanez</h3>
-                <p>Hi my name is Alexi and I am a Immersive, Media, and Games major at NAU. I am set to graduate
-                    with my bachelors in Spring 2027. My future goal career is to be a game developer and a website designer.</p>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-4 au-img-container">
-                <img src="./images" alt="Photo of Annabelle Rodriguez">
-            </div>
-            <div class="col-sm-8">
-                <h3 class="au-header">Annabelle Rodriguez</h3>
-                <p>Hey! I'm Annabelle Rodriguez and I am a Computer Science major at NAU. In the future, I
-                    would love to be a softeware developer or a networking engineer. I love
-                    listen to music, hang out with friends, and travel! </p>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-4 au-img-container">
-                <img src="https://avatars.githubusercontent.com/u/131414743" alt="Photo of Canyon Clark">
-            </div>
-            <div class="col-sm-8">
-                <h3 class="au-header">Canyon Clark</h3>
-                <p>Welcome, I'm Canyon Clark. I am a student at Northern Arizona University where I'm pursuing majors in Computer and Data Science. I'll be
-                    graduating in Spring 2028, and until then, I like to read, game, and code.</p>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-4 au-img-container">
-                <img src="./images" alt="Photo of Kristina Bermudez">
-            </div>
-            <div class="col-sm-8">
-                <h3 class="au-header">Kristina Bermudez</h3>
-                <p>Hello! My name is Kristina Bermudez! I'm a student at Northern Arizona University,
-                    and I'm hoping to graduate in Spring 2028 with a bachelor's degree in Computer Science and Math.
-                    I love watching movies, listening to podcasts, and playing video games!</p>
-            </div>
-        </div>
+        <div id="members-container" class="row mt-3"></div>
     </section>
 </main>
 
@@ -140,6 +88,48 @@
 <!-- javascript -->
 <script src="scripts/app.js"></script>
 <script type="module" src="scripts/renderRecentPosts.js"></script>
+<script>
+    async function loadTeamMembers() {
+        try {
+            const response = await fetch('admins.json');
+            const memberData = await response.json();
+            const container = document.getElementById('members-container');
+
+            memberData.forEach(member => {
+                // row for each member
+                const memberRow = document.createElement('div');
+                memberRow.classList.add('row', 'mt-3');
+
+                // image container
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('col-sm-4', 'au-img-container');
+                const img = document.createElement('img');
+                img.src = member.photo;
+                img.alt = `Photo of ${member.name}`;
+                imgContainer.appendChild(img);
+
+                // text container
+                const textContainer = document.createElement('div');
+                textContainer.classList.add('col-sm-8');
+                const nameHeader = document.createElement('h3');
+                nameHeader.classList.add('au-header');
+                nameHeader.textContent = member.name;
+                const bioParagraph = document.createElement('p');
+                bioParagraph.textContent = member.bio;
+                textContainer.appendChild(nameHeader);
+                textContainer.appendChild(bioParagraph);
+                memberRow.appendChild(imgContainer);
+                memberRow.appendChild(textContainer);
+                container.appendChild(memberRow);
+            });
+        } catch (error) {
+            console.error('Error loading members:', error);
+        }
+    }
+
+    loadTeamMembers();
+
+</script>
 </body>
 
 

@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 function getUsers() {
-    return JSON.parse(fs.readFileSync("users.json"));
+    return JSON.parse(fs.readFileSync("../users.json"));
 }
 
 app.post("/login", (req, res) => {

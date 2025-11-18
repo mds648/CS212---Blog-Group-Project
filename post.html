@@ -43,58 +43,57 @@
 
 <!-- main -->
 <main>
-    <section id="content" class="container my-4">
-        <div class="row g-2">
+    <div class="container">
+        <div class="row">
             <!-- Left Column - Main Post -->
-            <div id="post" class="col-md-8">
-                <div class="bg-light-brown p-4">
-                    <h2 id="blogTitle" class="fw-bold">Blog Title</h2>
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <div>
-                            <small>By: <strong id="postAuthor">Name Lastname</strong></small>
-                            <small id="postDate" class="ms-3">Posted on: <strong>January 1, 2025</strong></small>
-                            <small class="ms-3">Comments: <strong>0</strong></small>
-                        </div>
-                        <div>
-                            <!-- share button -->
-                            <button id="shareBtn" class="btn btn-outline-primary">Share This Post</button>
+            <div class="col-md-8">
+                <section id="content" class="container my-4">
+                    <div id="post">
+                        <div class="bg-light-brown p-4">
+                            <h2 id="blogTitle" class="fw-bold">Blog Title</h2>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <small>By: <strong id="postAuthor">Name Lastname</strong></small>
+                                    <small id="postDate" class="ms-3">Posted on: <strong>January 1, 2025</strong></small>
+                                    <small class="ms-3">Comments: <strong>0</strong></small>
+                                </div>
+                                <div>
+                                    <!-- share button -->
+                                    <button id="shareBtn" class="btn btn-outline-primary">Share This Post</button>
 
-                            <!-- like button -->
-                            <button id="likeBtn" class="btn">
-                                <img id="likeImg" src="./images/heart-outline.png" alt="like" style="width: 20px;">
+                                    <!-- like button -->
+                                    <button id="likeBtn" class="btn">
+                                        <img id="likeImg" src="./images/heart-outline.png" alt="like" style="width: 20px;">
+                                    </button>
+                                    <span id="likeCount">0</span>
+                                </div>
+                            </div>
+
+                            <!-- Post Content -->
+                            <div id="postContent" class="mt-4">
+                                <p>Loading Content...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Comment Section -->
+                <section id="comment-section" class="container my-4">
+                    <div class="bg-light-brown p-4">
+                        <h3>Comments:</h3>
+                        <div class="d-flex">
+                            <input type="text" id="commentInput" class="form-control" placeholder="Add a comment...">
+                            <button id="postCommentBtn" class="btn btn-sm ms-1" type="submit">
+                                Post
                             </button>
-                            <span id="likeCount">0</span>
+                        </div>
+
+                        <div id="comments">
+                            <ul class="list-unstyled">
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- Post Content -->
-                    <div id="postContent" class="mt-4">
-                        <p>Loading Content...</p>
-                    </div>
-                </div>
+                </section>
             </div>
-        </section>
-
-        <!-- Comment Section -->
-        <section id="comment-section" class="container my-4">
-            <div class="bg-light-brown p-4 col-md-8">
-                <h3>Comments:</h3>
-                <div class="d-flex">
-                    <input type="text" id="commentInput" class="form-control" placeholder="Add a comment..."></input>
-                    <button id="postCommentBtn" class="btn btn-sm ms-1" type="submit">
-                        Post
-                    </button>
-                </div>
-
-                <div id="comments">
-                    <ul class="list-unstyled">
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-    </main>
-
             <!-- Right Column - Sidebar -->
             <div id="post-sidebar" class="col-md-4">
                 <div class="bg-blue p-4">
@@ -131,7 +130,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </main>
 
 
@@ -141,96 +140,96 @@
 <!-- javascript -->
 <script>
     // set the initial state of the button to false 
-let liked = false;
-// set the initial count to 0
-let count = 0;
+    let liked = false;
+    // set the initial count to 0
+    let count = 0;
 
-likeBtn.addEventListener("click", function(e){
-    // get the opposite of the current state of the btn
-    liked = !liked;
-    
-    // if liked
-    if (liked) {
-        // change the img
-        likeImg.src = "./images/heart-filled.png";
-        // icrement the likes count
-        count++;
-    }
-    // if disliked
-    else {
-        // change the img
-        likeImg.src = "./images/heart-outline.png";
-        // decrement the count
-        count--;
-    }
-    // update the count
-    likeCount.textContent = count;
+    likeBtn.addEventListener("click", function (e) {
+        // get the opposite of the current state of the btn
+        liked = !liked;
 
-})
+        // if liked
+        if (liked) {
+            // change the img
+            likeImg.src = "./images/heart-filled.png";
+            // icrement the likes count
+            count++;
+        }
+        // if disliked
+        else {
+            // change the img
+            likeImg.src = "./images/heart-outline.png";
+            // decrement the count
+            count--;
+        }
+        // update the count
+        likeCount.textContent = count;
 
-// comment section 
-let comments = [];
-let admin = false; 
+    })
 
-function showComments() {
-    const list = $("#comments ul");
-    list.empty();
+    // comment section
+    let comments = [];
+    let admin = false;
 
-    comments.forEach((comment, index) => {
-        const li = $(`
+    function showComments() {
+        const list = $("#comments ul");
+        list.empty();
+
+        comments.forEach((comment, index) => {
+            const li = $(`
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <span class="comment-text">${comment}</span>
             </li>
         `);
 
-        // delete comment (admin only - for moderation)
-        if (admin === true) {
-            const deleteBtn = $(`
+            // delete comment (admin only - for moderation)
+            if (admin === true) {
+                const deleteBtn = $(`
                 <button class="btn btn-sm btn-outline-danger delete-btn">Delete</button>
             `);
 
-            deleteBtn.click(function () {
-                $(this).parent().slideUp(200, function () {
-                    comments.splice(index, 1);
-                    showComments();
-                });
-            })
+                deleteBtn.click(function () {
+                    $(this).parent().slideUp(200, function () {
+                        comments.splice(index, 1);
+                        showComments();
+                    });
+                })
 
 
-            li.append(deleteBtn);
+                li.append(deleteBtn);
+            }
+
+            list.append(li.hide().fadeIn(200));
+        });
+    }
+
+    showComments();
+
+    // add comment with btn
+    $("#postCommentBtn").click(function () {
+        const newComment = $("#commentInput").val();
+        if (newComment !== "") {
+            comments.push(newComment);
+            $("#commentInput").val("");
+            showComments();
         }
-
-        list.append(li.hide().fadeIn(200));
     });
-}
 
-showComments();
-
-// add comment with btn
-$("#postCommentBtn").click(function () {
-    const newComment = $("#commentInput").val();
-    if (newComment !== "") {
-        comments.push(newComment);
-        $("#commentInput").val(""); 
-        showComments();
-    }
-});
-
-// 'enter' to post, 'esc' to clear
-$("#commentInput").keydown(function (e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        $("#postCommentBtn").click();
-    } else if (e.key === "Escape") {
-        $(this).val("");
-    }
-});
+    // 'enter' to post, 'esc' to clear
+    $("#commentInput").keydown(function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            $("#postCommentBtn").click();
+        } else if (e.key === "Escape") {
+            $(this).val("");
+        }
+    });
 </script>
-    <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- javascript -->
-     <script type="module" src="./scripts/renderSinglePost.js"></script>
-    <script src="scripts/app.js"></script>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- javascript -->
+<script type="module" src="./scripts/renderSinglePost.js"></script>
+<script src="scripts/app.js"></script>
 </body>
 
 

@@ -4,7 +4,7 @@ import { initializePosts, getAllPosts } from "./blogData.js";
 // func. to generate the HTML for the all-posts page
 function renderPostList() {
     const allPosts = getAllPosts();
-    const container = document.querySelector('#all-posts')
+    const container = document.querySelector('#posts')
     if (!container) {
         console.error("could not find the container with class '.posts'");
         return;

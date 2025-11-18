@@ -195,7 +195,7 @@ h3.au-header {
     display: inline-block;
 }
 
-.form-control {
+#createPostForm.form-control {
     background-color: #EFE8DDFF;
 }
 /* ============== SIGN IN STYLES ============== */

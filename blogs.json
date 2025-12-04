@@ -5,7 +5,8 @@
         "author": "McKinley Sydnor",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 100
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "intro-to-blogs-2",
@@ -13,7 +14,8 @@
         "author": "McKinley Sydnor",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 1
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "intro-to-blogs-3",
@@ -21,7 +23,8 @@
         "author": "McKinley Sydnor",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 0
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "test-blog-1",
@@ -29,7 +32,8 @@
         "author": "Canyon Clark",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 0
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "test-blog-2",
@@ -37,7 +41,8 @@
         "author": "Alexi Montanez",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 0
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "test-blog-3",
@@ -45,7 +50,8 @@
         "author": "Annabelle Rodriguez",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 0
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "test-blog-4",
@@ -53,7 +59,8 @@
         "author": "Kristina Bermudez",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 0
+        "likes": 0,
+        "comments": []
     },
     {
         "id": "bad-blog-1",
@@ -61,6 +68,7 @@
         "author": "Name Missingname",
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
-        "likes": 0
+        "likes": 0,
+        "comments": []
     }
 ]

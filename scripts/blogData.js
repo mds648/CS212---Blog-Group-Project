@@ -2,7 +2,7 @@
     // var. to store the fetched blog post data
 let allBlogPosts = [];
     // 'macro' to store the json file path
-const JSON_PATH = '../blogs.json';
+const JSON_PATH = 'blogs.json';
 
 async function initializePosts() {
     try {

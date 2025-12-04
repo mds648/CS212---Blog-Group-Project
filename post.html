@@ -88,7 +88,7 @@
                         </div>
 
                         <div id="comments">
-                            <ul class="list-unstyled">
+                            <ul id="commentsList" class="list-unstyled">
                             </ul>
                         </div>
                     </div>
@@ -115,7 +115,6 @@
                         </ul>
                     </div>
 
-
                     <!-- Other Recent Posts -->
                     <div>
                         <h4>Other Recent Posts</h4>
@@ -138,63 +137,126 @@
 
 <!-- javascript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // set the initial state of the button to false 
-    let liked = false;
-    // set the initial count to 0
-    let count = 0;
-
-    likeBtn.addEventListener("click", function (e) {
-        // get the opposite of the current state of the btn
-        liked = !liked;
-
-        // if liked
-        if (liked) {
-            // change the img
-            likeImg.src = "./images/heart-filled.png";
-            // icrement the likes count
-            count++;
+<script type="module">
+    import { initializePosts, getPostByID } from './scripts/blogData.js';
+    
+    // function to initialize likes
+    async function initializeLikes() {
+        // get ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        if (!postId) {
+            console.error("Error: Post ID is missing from the URL. Cannot manage likes.");
+            return;
         }
-        // if disliked
-        else {
-            // change the img
-            likeImg.src = "./images/heart-outline.png";
-            // decrement the count
-            count--;
+
+        // load blog data to get the current global like count
+        await initializePosts();
+
+        // get the current post object
+        const currentPost = getPostByID(postId);
+        if (!currentPost) {
+            console.error(`Post with ID ${postId} was not found.`);
+            return;
         }
-        // update the count
+
+        // initialize additional variables
+            // var. to determine if the client has liked a post
+        const IS_LIKED_KEY = `is_liked_${postId}`;
+            // var. to get likes from current post
+        let count = currentPost.likes || 0;
+            // var. check local storage to see if client has liked this post
+        let liked = localStorage.getItem(IS_LIKED_KEY) === 'true';
+            // var. for UI elements
+        const likeImg = document.getElementById("likeImg");
+        const likeCount = document.getElementById("likeCount");
+        const likeBtn = document.getElementById("likeBtn");
+
+        // update UI + images
         likeCount.textContent = count;
+        likeImg.src = liked ? "./images/heart-filled.png" : "./images/heart-outline.png";
+        
+        // event listener for like button click
+        likeBtn.addEventListener("click", async function (e) {
+            let apiEndpoint = '';
+            let action = '';
 
-    })
+            // check if the post has already been liked
+            if (liked) {
+                console.log("Post already liked by this user. Unliking post...")
+                apiEndpoint = `http://localhost:3000/api/unlike/${postId}`;
+                action = 'unliked';
+            } else {
+                apiEndpoint = `http://localhost:3000/api/like/${postId}`;
+                action = 'liked';
+            }
 
-    // comment section
+            try {
+                const response = await fetch(apiEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // toggle the state
+                    liked = !liked; 
+                    
+                    // update UI with new global count
+                    count = data.newLikeCount;
+                    likeCount.textContent = count;
+                    
+                    // switch the image based on current state
+                    likeImg.src = liked ? "./images/heart-filled.png" : "./images/heart-outline.png";
+                    
+                    // update local storage
+                    localStorage.setItem(IS_LIKED_KEY, liked.toString());
+                    console.log(`Post ${postId} ${action}. New like count: ${count}`);
+                } else {
+                    console.error(`Server failed to ${action} the post.`);
+                }
+            } catch (error) {
+                console.error("Network error. Is the server running? Check console for details.", error);
+            }
+        })
+    }
+
+    initializeLikes();
+</script>
+
+<script>
+    // get current post ID from URL
+    const postId = new URLSearchParams(window.location.search).get('id');
+    const list = $("#commentsList");
+    const admin = false;
     let comments = [];
-    let admin = false;
 
     function showComments() {
-        const list = $("#comments ul");
         list.empty();
+        if (comments.length === 0) {
+            list.append('<li class="list-group-item text-center text-muted">No comments yet. Be the first to post!</li>');
+            return;
+        }
 
+        // render each comment
         comments.forEach((comment, index) => {
             const li = $(`
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="comment-text">${comment}</span>
-            </li>
-        `);
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="comment-text">${comment}</span>
+                </li>
+            `);
 
-            // delete comment (admin only - for moderation)
+            // delete comment -- admin only
             if (admin === true) {
                 const deleteBtn = $(`
                 <button class="btn btn-sm btn-outline-danger delete-btn">Delete</button>
             `);
-
                 deleteBtn.click(function () {
                     $(this).parent().slideUp(200, function () {
                         comments.splice(index, 1);
                         showComments();
                     });
                 })
-
 
                 li.append(deleteBtn);
             }
@@ -203,27 +265,66 @@
         });
     }
 
-    showComments();
+    // function to fetch latest comments
+    async function loadComments() {
+        try {
+            const cacheBuster = `?t=${new Date().getTime()}`;
+            const response = await fetch(`blogs.json${cacheBuster}`);
+            const posts = await response.json();
+            
+            const currentPost = posts.find(p => p.id === postId);
 
-    // add comment with btn
-    $("#postCommentBtn").click(function () {
-        const newComment = $("#commentInput").val();
-        if (newComment !== "") {
-            comments.push(newComment);
-            $("#commentInput").val("");
-            showComments();
+            if (currentPost && currentPost.comments) {
+                comments = currentPost.comments;
+            } else {
+                console.warn('No saved comments array found for this post. Initializing as empty.');
+            }
+        } catch (error) {
+            console.error('Failed to load initial comments:', error);
         }
-    });
+    }
 
-    // 'enter' to post, 'esc' to clear
-    $("#commentInput").keydown(function (e) {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            $("#postCommentBtn").click();
-        } else if (e.key === "Escape") {
-            $(this).val("");
-        }
-    });
+    async function initializeComments() {
+        await loadComments();
+        showComments();
+
+        // add comment with button
+        $("#postCommentBtn").click(async function () {
+            const newComment = $("#commentInput").val().trim();
+            if (newComment !== "") {
+                try {
+                    const response = await fetch(`http://localhost:3000/api/comment/${postId}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ comment: newComment })
+                    });
+
+                    if (response.ok) {
+                        comments.push(newComment);
+                        $("#commentInput").val("");
+                        showComments();
+                        console.log("Comment successfully posted and saved to server.");
+                    } else {
+                        console.error("Server failed to save the comment.", await response.json());
+                    }
+                } catch (error) {
+                    console.error("Network error while posting comment:", error);
+                }
+            }
+        });
+
+        // enter + esc functionality
+        $("#commentInput").keydown(function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                $("#postCommentBtn").click();
+            } else if (e.key === "Escape") {
+                $(this).val("");
+            }
+        });
+    }
+    
+    initializeComments();
 </script>
 <!-- javascript -->
 <script type="module" src="./scripts/renderSinglePost.js"></script>

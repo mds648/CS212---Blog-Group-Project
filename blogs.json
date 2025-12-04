@@ -15,7 +15,9 @@
         "date": "mm-dd-yyyy",
         "contents": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus venenatis sem, a elementum eros vehicula at. Etiam quis mauris vitae libero consequat posuere eget in urna. Integer vel volutpat leo. Nullam egestas tristique erat. Curabitur viverra mauris non libero faucibus, et eleifend neque faucibus.",
         "likes": 0,
-        "comments": []
+        "comments": [
+            "Test"
+        ]
     },
     {
         "id": "intro-to-blogs-3",

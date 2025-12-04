@@ -1,5 +1,5 @@
 const express = require("express");
-const fs = require("fs").promises;
+const fs = require("fs");
 const path = require('path');
 const cors = require("cors");
 
@@ -17,7 +17,7 @@ app.post('/api/like/:id', async (req, res) => {
     const postID = req.params.id;
     try {
         // read contents of blogs.json
-        const data = await fs.readFile(BLOGS_FILE_PATH, 'utf8');
+        const data = await fs.promises.readFile(BLOGS_FILE_PATH, 'utf8');
         let posts = JSON.parse(data);
 
         // find post by ID
@@ -35,7 +35,7 @@ app.post('/api/like/:id', async (req, res) => {
         const newLikeCount = posts[postIndex].likes;
 
         // write array into blogs.json file
-        await fs.writeFile(BLOGS_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
+        await fs.promises.writeFile(BLOGS_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
         console.log(`Post ${postID} liked. New like count: ${newLikeCount}`);
         // send the global count to client
         res.json({ 
@@ -55,7 +55,7 @@ app.post('/api/unlike/:id', async (req, res) => {
     const postID = req.params.id;
     try {
         // read contents of blogs.json
-        const data = await fs.readFile(BLOGS_FILE_PATH, 'utf8');
+        const data = await fs.promises.readFile(BLOGS_FILE_PATH, 'utf8');
         let posts = JSON.parse(data);
 
         // find post by ID
@@ -71,7 +71,7 @@ app.post('/api/unlike/:id', async (req, res) => {
         const newLikeCount = posts[postIndex].likes;
 
         // write array into blogs.json file
-        await fs.writeFile(BLOGS_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
+        await fs.promises.writeFile(BLOGS_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
         console.log(`Post ${postID} unliked. New like count: ${newLikeCount}`);
         
         // send the global count to client
@@ -99,7 +99,7 @@ app.post('/api/comment/:id', async (req, res) => {
 
     try {
         // read contents of blog.json
-        const data = await fs.readFile(BLOGS_FILE_PATH, 'utf8');
+        const data = await fs.promises.readFile(BLOGS_FILE_PATH, 'utf8');
         let posts = JSON.parse(data);
 
         // find post by ID
@@ -110,14 +110,14 @@ app.post('/api/comment/:id', async (req, res) => {
 
         // initialize comments array if it does not exist
         if (!posts[postIndex].comments) {
-            post[postIndex].comments = [];
+            posts[postIndex].comments = [];
         }
         
         // push the new comment into the array
         posts[postIndex].comments.push(newComment);
 
         // write the updated array to blogs.json
-        await fs.writeFile(BLOG_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
+        await fs.promises.writeFile(BLOGS_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
         console.log(`New comment added to post ${postID}: "${newComment}"`);
 
         // success response
@@ -156,6 +156,6 @@ app.post("/login", (req, res) => {
 });
 
 app.listen(PORT, () => 
-    console.log(`Server running on https://localhost:${PORT}`)
+    console.log(`Server running on http://localhost:${PORT}`)
 );
 

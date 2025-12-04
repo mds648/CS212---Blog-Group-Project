@@ -225,10 +225,21 @@
 </script>
 
 <script>
+    // get the current user's data from local storage
+    const storedUser = localStorage.getITem('currentUser');
+    let currentUser = null;
+    if (storedUser) {
+        try {
+            currentUser = JSON.parse(storedUser);
+        } catch (e) {
+            console.error("Error parsing user data from localStorage:", e);
+        } 
+    }
+
     // get current post ID from URL
     const postId = new URLSearchParams(window.location.search).get('id');
     const list = $("#commentsList");
-    const admin = false;
+    const admin = currentUser && currentUser.role === 'admin';
     let comments = [];
 
     function showComments() {

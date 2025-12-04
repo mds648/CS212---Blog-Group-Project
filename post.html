@@ -139,7 +139,7 @@
 <!-- javascript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="module">
-    import { initializePosts, getPostByID } from './blogData.js';
+    import { initializePosts, getPostByID } from './scripts/blogData.js';
     
     // function to initialize likes
     async function initializeLikes() {
@@ -155,7 +155,7 @@
         await initializePosts();
 
         // get the current post object
-        const currentPost = getPostByID(postID);
+        const currentPost = getPostByID(postId);
         if (!currentPost) {
             console.error(`Post with ID ${postId} was not found.`);
             return;
@@ -165,7 +165,7 @@
             // var. to determine if the client has liked a post
         const IS_LIKED_KEY = `is_liked_${postId}`;
             // var. to get likes from current post
-        let count = currentPost.likes;
+        let count = currentPost.likes || 0;
             // var. check local storage to see if client has liked this post
         let liked = localStorage.getItem(IS_LIKED_KEY) === 'true';
             // var. for UI elements
@@ -179,31 +179,42 @@
         
         // event listener for like button click
         likeBtn.addEventListener("click", async function (e) {
-            // prevent client from liking more than once
+            let apiEndpoint = '';
+            let action = '';
+
+            // check if the post has already been liked
             if (liked) {
-                console.log("Post already liked by this user.")
-                return;
+                console.log("Post already liked by this user. Unliking post...")
+                apiEndpoint = `http://localhost:3000/api/unlike/${postId}`;
+                action = 'unliked';
+            } else {
+                apiEndpoint = `http://localhost:3000/api/like/${postId}`;
+                action = 'liked';
             }
 
-            // send API request to increment like count in blogs.json
             try {
-                const response = await fetch(`http://localhost:3000/api/like/${postId}`, {
+                const response = await fetch(apiEndpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                 });
 
                 if (response.ok) {
                     const data = await response.json();
+                    // toggle the state
+                    liked = !liked; 
                     
+                    // update UI with new global count
                     count = data.newLikeCount;
                     likeCount.textContent = count;
                     
-                    liked = true;
-                    likeImg.src = "./images/heart-filled.png";
-                    localStorage.setItem(IS_LIKED_KEY, 'true');
-
+                    // switch the image based on current state
+                    likeImg.src = liked ? "./images/heart-filled.png" : "./images/heart-outline.png";
+                    
+                    // update local storage
+                    localStorage.setItem(IS_LIKED_KEY, liked.toString());
+                    console.log(`Post ${postId} ${action}. New like count: ${count}`);
                 } else {
-                    console.error("Server failed to update the like count.");
+                    console.error(`Server failed to ${action} the post.`);
                 }
             } catch (error) {
                 console.error("Network error. Is the server running? Check console for details.", error);

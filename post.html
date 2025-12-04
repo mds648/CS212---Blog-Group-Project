@@ -239,7 +239,7 @@
     // get current post ID from URL
     const postId = new URLSearchParams(window.location.search).get('id');
     const list = $("#commentsList");
-    const admin = currentUser && currentUser.role === 'admin';
+    const admin = currentUser && currentUser.role === 'mod';
     let comments = [];
 
     function showComments() {

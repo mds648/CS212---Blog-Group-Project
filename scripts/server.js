@@ -86,6 +86,54 @@ app.post('/api/unlike/:id', async (req, res) => {
     }
 });
 
+// API endpoint to save new comments to blogs.json
+app.post('/api/comment/:id', async (req, res) => {
+    // get the ID from URL
+    const postID = req.params.id;
+    // get the new comment from the request
+    const newComment = req.body.comment;
+    // validate
+    if (!newComment) {
+        return res.status(400).json({ error: 'Comment text is required' });
+    }
+
+    try {
+        // read contents of blog.json
+        const data = await fs.readFile(BLOGS_FILE_PATH, 'utf8');
+        let posts = JSON.parse(data);
+
+        // find post by ID
+        const postIndex = posts.findIndex(p => p.id === postID);
+        if (postIndex === -1) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+
+        // initialize comments array if it does not exist
+        if (!posts[postIndex].comments) {
+            post[postIndex].comments = [];
+        }
+        
+        // push the new comment into the array
+        posts[postIndex].comments.push(newComment);
+
+        // write the updated array to blogs.json
+        await fs.writeFile(BLOG_FILE_PATH, JSON.stringify(posts, null, 4), 'utf8');
+        console.log(`New comment added to post ${postID}: "${newComment}"`);
+
+        // success response
+        res.status(201).json({
+            success: true,
+            message: 'Comment successfully saved.',
+            newComment: newComment
+        })
+    } catch (error) {
+        console.error('Error saving comment:', error);
+        res.status(500).json({
+            error: 'Failed to save comment data on server!'
+        })
+    }
+})
+
 function getUsers() {
     return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../users.json')));
 }

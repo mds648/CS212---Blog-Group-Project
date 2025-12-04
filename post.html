@@ -138,35 +138,83 @@
 
 <!-- javascript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // set the initial state of the button to false 
-    let liked = false;
-    // set the initial count to 0
-    let count = 0;
-
-    likeBtn.addEventListener("click", function (e) {
-        // get the opposite of the current state of the btn
-        liked = !liked;
-
-        // if liked
-        if (liked) {
-            // change the img
-            likeImg.src = "./images/heart-filled.png";
-            // icrement the likes count
-            count++;
+<script type="module">
+    import { initializePosts, getPostByID } from './blogData.js';
+    
+    // function to initialize likes
+    async function initializeLikes() {
+        // get ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        if (!postId) {
+            console.error("Error: Post ID is missing from the URL. Cannot manage likes.");
+            return;
         }
-        // if disliked
-        else {
-            // change the img
-            likeImg.src = "./images/heart-outline.png";
-            // decrement the count
-            count--;
+
+        // load blog data to get the current global like count
+        await initializePosts();
+
+        // get the current post object
+        const currentPost = getPostByID(postID);
+        if (!currentPost) {
+            console.error(`Post with ID ${postId} was not found.`);
+            return;
         }
-        // update the count
+
+        // initialize additional variables
+            // var. to determine if the client has liked a post
+        const IS_LIKED_KEY = `is_liked_${postId}`;
+            // var. to get likes from current post
+        let count = currentPost.likes;
+            // var. check local storage to see if client has liked this post
+        let liked = localStorage.getItem(IS_LIKED_KEY) === 'true';
+            // var. for UI elements
+        const likeImg = document.getElementById("likeImg");
+        const likeCount = document.getElementById("likeCount");
+        const likeBtn = document.getElementById("likeBtn");
+
+        // update UI + images
         likeCount.textContent = count;
+        likeImg.src = liked ? "./images/heart-filled.png" : "./images/heart-outline.png";
+        
+        // event listener for like button click
+        likeBtn.addEventListener("click", async function (e) {
+            // prevent client from liking more than once
+            if (liked) {
+                console.log("Post already liked by this user.")
+                return;
+            }
 
-    })
+            // send API request to increment like count in blogs.json
+            try {
+                const response = await fetch(`http://localhost:3000/api/like/${postId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
 
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    count = data.newLikeCount;
+                    likeCount.textContent = count;
+                    
+                    liked = true;
+                    likeImg.src = "./images/heart-filled.png";
+                    localStorage.setItem(IS_LIKED_KEY, 'true');
+
+                } else {
+                    console.error("Server failed to update the like count.");
+                }
+            } catch (error) {
+                console.error("Network error. Is the server running? Check console for details.", error);
+            }
+        })
+    }
+
+    initializeLikes();
+</script>
+
+<script>
     // comment section
     let comments = [];
     let admin = false;
